@@ -37,9 +37,11 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to my blog</h1>
         </header>
+        <div className="container">
         <Loader loaded={this.state.loaded} className="App-intro">
           <BlogList posts={this.state.posts} />
         </Loader>
+        </div>
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Post = (props) => {
   return (
-    <div className="BlogListContainer">
+    <div className="col-4">
         <div>
           {props.title}
         </div>
@@ -12,7 +12,7 @@ const Post = (props) => {
 
 export const BlogList = (props) => {
   return (
-    <div>
+    <div className="col-12">
       {props.posts.map(post => <Post key={post._id} {...post} />)}
     </div>
   );
