@@ -1,13 +1,16 @@
 import React from 'react';
+import { Route, NavLink } from 'react-router-dom'
 
 const Post = (props) => {
   return (
     <div className="col-4">
-        <div>
-          {props.title}
-        </div>
-    </div>
-  );
+      <NavLink to={{
+        pathname: '/post',
+        search: "id=" + props._id
+      }}>
+        {props.title}
+      </NavLink>
+    </div>);
 };
 
 export const BlogList = (props) => {

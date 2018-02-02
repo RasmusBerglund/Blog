@@ -4,7 +4,7 @@ import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import sanity from '../../lib/sanity';
-import { BlogList } from '../blogList'
+import { BlogList } from './blogList'
 
 var Loader = require('react-loader');
 
@@ -25,7 +25,6 @@ class Home extends Component {
           )
           .then(res => {
             this.setState({ posts: res, loaded: true })
-            console.log(res)
           })
           .catch(err => {
             console.error('Oh no, error occured: ', err)

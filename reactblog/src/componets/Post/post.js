@@ -1,25 +1,28 @@
 import React, { Component } from 'react'
 import sanity from '../../lib/sanity';
+import ReactQueryParams from 'react-query-params';
+
 
 var Loader = require('react-loader');
 
-class About extends Component {
+class Post extends ReactQueryParams {
   constructor(props) {
     super(props);
     this.state = {
-      author: {},
+      post: {},
       loaded: false,
     };
   }
 
-  async componentWillMount() {
+  async componentWillMount() {   
     await sanity
       .fetch(
       '*[_id == $id]',
-      { id: '6f5a7c17-431f-4426-b0da-14b04acc51f2' }
+      { id: this.queryParams.id }
       )
       .then(res => {
-        this.setState({ author: res[0], loaded: true })
+        this.setState({ post: res[0], loaded: true })
+        console.log(this.state.post)
       })
       .catch(err => {
         console.error('Oh no, error occured: ', err)
@@ -29,12 +32,11 @@ class About extends Component {
     return (
       <div>
         <Loader loaded={this.state.loaded}>
-          <h1>{this.state.author.name}</h1>
-          <p>Hello {this.state.author.name}!</p>
+          <h1>{this.state.post.title}</h1>
         </Loader>
       </div>
     )
   }
 }
 
-export default About;
+export default Post;
